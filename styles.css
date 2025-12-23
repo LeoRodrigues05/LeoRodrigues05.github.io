@@ -18,6 +18,8 @@
     --shadow-md: 0 4px 6px -1px rgba(255, 107, 53, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(255, 107, 53, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(255, 107, 53, 0.1);
+    --gradient-primary: linear-gradient(135deg, #ff6b35, #ff8e53, #f7931e);
+    --gradient-hero: linear-gradient(135deg, #fff5f0 0%, #ffe8dc 50%, #ffffff 100%);
 }
 
 html {
@@ -122,7 +124,7 @@ body {
     display: flex;
     align-items: center;
     padding-top: 80px;
-    background: linear-gradient(135deg, #fff5f0 0%, #ffe8dc 50%, var(--background) 100%);
+    background: var(--gradient-hero);
     position: relative;
 }
 
@@ -296,7 +298,7 @@ section {
 
 .project-image {
     height: 200px;
-    background: linear-gradient(135deg, #ff6b35, #ff8e53, #f7931e);
+    background: var(--gradient-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -525,7 +527,7 @@ section {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    background: var(--gradient-primary);
 }
 
 .cv-download-section {
@@ -541,6 +543,13 @@ section {
 
 .cv-download-section .btn span {
     font-size: 1.5rem;
+}
+
+.cv-note {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 /* Contact Section */
