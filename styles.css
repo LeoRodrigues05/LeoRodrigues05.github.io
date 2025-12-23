@@ -122,7 +122,6 @@ body {
     display: flex;
     align-items: center;
     padding-top: 80px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background: linear-gradient(135deg, var(--background-secondary) 0%, var(--background) 100%);
     position: relative;
 }

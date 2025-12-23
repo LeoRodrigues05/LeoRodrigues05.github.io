@@ -51,6 +51,7 @@ window.addEventListener('scroll', () => {
 // Project filtering
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
+const FILTER_ANIMATION_DELAY = 10; // Small delay to ensure CSS transitions work properly
 
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -66,14 +67,14 @@ filterButtons.forEach(button => {
                 card.classList.remove('hidden');
                 setTimeout(() => {
                     card.style.display = 'block';
-                }, 10);
+                }, FILTER_ANIMATION_DELAY);
             } else {
                 const categories = card.getAttribute('data-category').split(' ');
                 if (categories.includes(filterValue)) {
                     card.classList.remove('hidden');
                     setTimeout(() => {
                         card.style.display = 'block';
-                    }, 10);
+                    }, FILTER_ANIMATION_DELAY);
                 } else {
                     card.style.display = 'none';
                     card.classList.add('hidden');
