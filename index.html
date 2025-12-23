@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leo Rodrigues - AI Research & Projects Portfolio">
+    <title>Leo Rodrigues | AI Research & Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">Leo Rodrigues</div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Leo Rodrigues</span></h1>
+                <p class="hero-subtitle">AI Researcher & Software Developer</p>
+                <p class="hero-description">
+                    I'm passionate about artificial intelligence and machine learning. 
+                    Currently diving deep into AI research, building innovative projects, 
+                    and exploring the frontiers of intelligent systems.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">A showcase of my recent work in AI and software development</p>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project Card 1 -->
+                <div class="project-card" data-category="ai research">
+                    <div class="project-image">
+                        <div class="project-placeholder">🤖</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Neural Network Architecture</h3>
+                        <p class="project-description">
+                            Developed a novel neural network architecture for improved performance on 
+                            computer vision tasks. Implemented using PyTorch with custom layers.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <div class="project-placeholder">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ML Model Pipeline</h3>
+                        <p class="project-description">
+                            Built an end-to-end machine learning pipeline for data preprocessing, 
+                            model training, and deployment. Includes automated hyperparameter tuning.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">MLOps</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" data-category="web ai">
+                    <div class="project-image">
+                        <div class="project-placeholder">💬</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Chatbot Interface</h3>
+                        <p class="project-description">
+                            Created an interactive web-based chatbot interface powered by large 
+                            language models with real-time response streaming.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                            <span class="tag">LLMs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card" data-category="research">
+                    <div class="project-image">
+                        <div class="project-placeholder">📝</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Research Paper Implementation</h3>
+                        <p class="project-description">
+                            Reproduced results from recent AI research papers, analyzing their 
+                            methodologies and contributing improvements to the codebase.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder">🌐</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Full-Stack Web Application</h3>
+                        <p class="project-description">
+                            Designed and developed a full-stack web application with modern 
+                            architecture, RESTful APIs, and responsive frontend.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">React</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <div class="project-placeholder">🎯</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Object Detection System</h3>
+                        <p class="project-description">
+                            Implemented a real-time object detection system using YOLO and custom 
+                            training data for specific use cases.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">YOLO</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research/CV Section -->
+    <section class="research" id="research">
+        <div class="container">
+            <h2 class="section-title">Research & Experience</h2>
+            <p class="section-subtitle">My journey in AI research and academic pursuits</p>
+
+            <div class="research-content">
+                <div class="research-section">
+                    <h3 class="research-heading">Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Your Degree</h4>
+                                <p class="timeline-meta">University Name | Year - Present</p>
+                                <p>Focus on artificial intelligence, machine learning, and computer science fundamentals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-section">
+                    <h3 class="research-heading">Research Interests</h3>
+                    <div class="interests-grid">
+                        <div class="interest-card">
+                            <div class="interest-icon">🧠</div>
+                            <h4>Deep Learning</h4>
+                            <p>Neural networks, transformers, and advanced architectures</p>
+                        </div>
+                        <div class="interest-card">
+                            <div class="interest-icon">👁️</div>
+                            <h4>Computer Vision</h4>
+                            <p>Image recognition, object detection, and visual understanding</p>
+                        </div>
+                        <div class="interest-card">
+                            <div class="interest-icon">💬</div>
+                            <h4>Natural Language Processing</h4>
+                            <p>Language models, text generation, and understanding</p>
+                        </div>
+                        <div class="interest-card">
+                            <div class="interest-icon">🤖</div>
+                            <h4>AI Safety & Ethics</h4>
+                            <p>Responsible AI development and ethical considerations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-section">
+                    <h3 class="research-heading">Skills & Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">C++</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>AI/ML Frameworks</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PyTorch</span>
+                                <span class="skill-tag">TensorFlow</span>
+                                <span class="skill-tag">Scikit-learn</span>
+                                <span class="skill-tag">Keras</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Web Development</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">REST APIs</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools & Platforms</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Jupyter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-download">
+                    <a href="#" class="btn btn-primary">Download Full CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Feel free to reach out for collaborations, research opportunities, or just to connect</p>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💻</div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/LeoRodrigues05" target="_blank">github.com/LeoRodrigues05</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🐦</div>
+                        <h3>Twitter</h3>
+                        <a href="https://twitter.com/yourhandle" target="_blank">@yourhandle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Leo Rodrigues. All rights reserved.</p>
+            <p>Built with passion for AI and innovation</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
