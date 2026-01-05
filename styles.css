@@ -752,6 +752,7 @@ object.cv-viewer {
 }
 
 /* Utility Classes */
-.contact-card-link.hidden {
-    display: none;
+/* Hidden element utility class */
+.hidden {
+    display: none !important;
 }

@@ -35,7 +35,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="profile-picture">
-                    <img src="profile.jpg" alt="Leo Rodrigues Profile Picture">
+                    <img src="" alt="Leo Rodrigues Profile Picture" data-config-src="profilePicture">
                 </div>
                 <h1 class="hero-title">Hi, I'm <span class="highlight">Leo Rodrigues</span></h1>
                 <p class="hero-subtitle">Master's Student in Machine Learning | Computer Vision Researcher</p>
@@ -292,7 +292,7 @@
                 </div>
 
                 <div class="cv-download">
-                    <a href="Resume_LeoRodrigues_2025.pdf" class="btn btn-primary" download>Download Full CV</a>
+                    <a href="" class="btn btn-primary" download data-config-href="cv">Download Full CV</a>
                 </div>
             </div>
         </div>
@@ -308,16 +308,18 @@
                 <div class="cv-viewer-wrapper">
                     <!-- Use object tag for better PDF embedding with fallback -->
                     <object 
-                        data="Resume_LeoRodrigues_2025.pdf" 
+                        data="" 
                         type="application/pdf"
                         class="cv-viewer"
                         title="Leo Rodrigues CV"
-                        id="cvObject">
+                        id="cvObject"
+                        data-config-src="cv">
                         <iframe 
-                            src="Resume_LeoRodrigues_2025.pdf"
+                            src=""
                             class="cv-viewer"
-                            title="Leo Rodrigues CV">
-                            <p>Your browser does not support PDF viewing. Please <a href="Resume_LeoRodrigues_2025.pdf" download>download the CV</a> to view it.</p>
+                            title="Leo Rodrigues CV"
+                            data-config-src="cv">
+                            <p>Your browser does not support PDF viewing. Please <a href="" download data-config-href="cv">download the CV</a> to view it.</p>
                         </iframe>
                     </object>
                 </div>
@@ -325,7 +327,7 @@
                     <p class="cv-note">
                         View my complete CV above or download it for offline viewing.
                     </p>
-                    <a href="Resume_LeoRodrigues_2025.pdf" class="btn btn-primary" id="downloadCvBtn" download>
+                    <a href="" class="btn btn-primary" id="downloadCvBtn" download data-config-href="cv">
                         <span>📥</span> Download CV (PDF)
                     </a>
                 </div>
@@ -365,7 +367,7 @@
                             <h3>Twitter</h3>
                         </div>
                     </a>
-                    <a href="#" class="contact-card-link" id="googleScholarLink">
+                    <a href="" target="_blank" class="contact-card-link" id="googleScholarLink" data-config-href="googleScholar">
                         <div class="contact-card">
                             <div class="contact-icon">🎓</div>
                             <h3>Google Scholar</h3>
