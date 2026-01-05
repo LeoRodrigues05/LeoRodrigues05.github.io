@@ -2,8 +2,8 @@
 const CONFIG = {
     // Asset file names
     assets: {
-        cv: 'Resume_LeoRodrigues_2025.pdf',
-        profilePicture: 'profile.jpg',
+        cv: 'Research_CV_LeoRodrigues_2025.pdf',
+        profilePicture: 'profile_picture.jpeg',
         cvHtml: 'Resume_LeoRodrigues_2025.html' // Keep for backwards compatibility
     },
     
@@ -17,14 +17,14 @@ const CONFIG = {
             linkedin: 'https://www.linkedin.com/in/leo-rodrigues-3b9b361b8/',
             github: 'https://github.com/LeoRodrigues05',
             twitter: 'https://x.com/leo_raphael_ro',
-            googleScholar: '' // To be filled by user - leave empty for now
+            googleScholar: 'https://scholar.google.com/citations?user=85Hx-ZkAAAAJ&hl=en' 
         }
     },
     
     // Site metadata
     meta: {
-        name: 'Leo Rodrigues',
-        title: "Master's Student in Machine Learning | Computer Vision Researcher",
+        name: 'Leo Raphael Rodrigues',
+        title: "Master's Student in Computer Science | ML Researcher",
         university: 'Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)'
     }
 };
