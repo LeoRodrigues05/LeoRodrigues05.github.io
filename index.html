@@ -34,10 +34,13 @@
     <section class="hero" id="about">
         <div class="container">
             <div class="hero-content">
+                <div class="profile-picture">
+                    <img src="profile.jpg" alt="Leo Rodrigues Profile Picture">
+                </div>
                 <h1 class="hero-title">Hi, I'm <span class="highlight">Leo Rodrigues</span></h1>
-                <p class="hero-subtitle">PhD Student in Machine Learning | Computer Vision Researcher</p>
+                <p class="hero-subtitle">Master's Student in Machine Learning | Computer Vision Researcher</p>
                 <p class="hero-description">
-                    I'm a PhD student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) 
+                    I'm a first year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) 
                     specializing in Machine Learning and Computer Vision. My research focuses on self-supervised 
                     learning, video understanding, and efficient AI systems that push the boundaries of 
                     intelligent visual perception.
@@ -212,7 +215,7 @@
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
-                                <h4>PhD in Machine Learning</h4>
+                                <h4>Master's in Machine Learning</h4>
                                 <p class="timeline-meta">Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) | 2023 - Present</p>
                                 <p>Specializing in Computer Vision and Self-Supervised Learning. Research focus on video understanding, efficient AI systems, and learning visual representations without manual annotations.</p>
                             </div>
@@ -303,18 +306,26 @@
             
             <div class="cv-viewer-container">
                 <div class="cv-viewer-wrapper">
-                    <iframe 
-                        src="Resume_LeoRodrigues_2025.html" 
+                    <!-- Use object tag for better PDF embedding with fallback -->
+                    <object 
+                        data="Resume_LeoRodrigues_2025.pdf" 
+                        type="application/pdf"
                         class="cv-viewer"
-                        title="Leo Rodrigues CV">
-                        <p>Your browser does not support iframe viewing. Please <a href="Resume_LeoRodrigues_2025.pdf" download>download the CV</a> to view it.</p>
-                    </iframe>
+                        title="Leo Rodrigues CV"
+                        id="cvObject">
+                        <iframe 
+                            src="Resume_LeoRodrigues_2025.pdf"
+                            class="cv-viewer"
+                            title="Leo Rodrigues CV">
+                            <p>Your browser does not support PDF viewing. Please <a href="Resume_LeoRodrigues_2025.pdf" download>download the CV</a> to view it.</p>
+                        </iframe>
+                    </object>
                 </div>
                 <div class="cv-download-section">
                     <p class="cv-note">
-                        Note: Upload your CV PDF as "Resume_LeoRodrigues_2025.pdf" to display it here.
+                        View my complete CV above or download it for offline viewing.
                     </p>
-                    <a href="Resume_LeoRodrigues_2025.pdf" class="btn btn-primary" download>
+                    <a href="Resume_LeoRodrigues_2025.pdf" class="btn btn-primary" id="downloadCvBtn" download>
                         <span>📥</span> Download CV (PDF)
                     </a>
                 </div>
@@ -330,27 +341,36 @@
 
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">📧</div>
-                        <h3>Email</h3>
-                        <a href="mailto:Leo.Rodrigues@mbzuai.com">Leo.Rodrigues@mbzuai.com</a>
-                        <a href="mailto:leoraphaelro@hotmail.com">leoraphaelro@hotmail.com</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">💼</div>
-                        <h3>LinkedIn</h3>
-                        <a href="https://www.linkedin.com/in/leo-rodrigues-3b9b361b8/" target="_blank">leo-rodrigues-3b9b361b8</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">💻</div>
-                        <h3>GitHub</h3>
-                        <a href="https://github.com/LeoRodrigues05" target="_blank">github.com/LeoRodrigues05</a>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🐦</div>
-                        <h3>Twitter</h3>
-                        <a href="https://x.com/leo_raphael_ro" target="_blank">@leo_raphael_ro</a>
-                    </div>
+                    <a href="mailto:Leo.Rodrigues@mbzuai.com" class="contact-card-link">
+                        <div class="contact-card">
+                            <div class="contact-icon">📧</div>
+                            <h3>Email</h3>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/leo-rodrigues-3b9b361b8/" target="_blank" class="contact-card-link">
+                        <div class="contact-card">
+                            <div class="contact-icon">💼</div>
+                            <h3>LinkedIn</h3>
+                        </div>
+                    </a>
+                    <a href="https://github.com/LeoRodrigues05" target="_blank" class="contact-card-link">
+                        <div class="contact-card">
+                            <div class="contact-icon">💻</div>
+                            <h3>GitHub</h3>
+                        </div>
+                    </a>
+                    <a href="https://x.com/leo_raphael_ro" target="_blank" class="contact-card-link">
+                        <div class="contact-card">
+                            <div class="contact-icon">🐦</div>
+                            <h3>Twitter</h3>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="contact-card-link" id="googleScholarLink">
+                        <div class="contact-card">
+                            <div class="contact-icon">🎓</div>
+                            <h3>Google Scholar</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -360,10 +380,12 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Leo Rodrigues. All rights reserved.</p>
-            <p>PhD Student at MBZUAI | Machine Learning & Computer Vision Research</p>
+            <p>Master's Student at MBZUAI | Machine Learning & Computer Vision Research</p>
         </div>
     </footer>
 
+    <script src="config.js"></script>
+    <script src="content.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
