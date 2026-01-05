@@ -172,4 +172,53 @@ document.querySelectorAll('a[href="#"]').forEach(link => {
     });
 });
 
+// Initialize config-based updates immediately (script is loaded at end of body)
+(function initializeConfig() {
+    // Update hero content from content.js
+    if (typeof ABOUT_CONTENT !== 'undefined') {
+        const heroDescription = document.querySelector('.hero-description');
+        if (heroDescription) {
+            heroDescription.textContent = ABOUT_CONTENT.hero.description;
+        }
+        
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (heroSubtitle) {
+            heroSubtitle.textContent = ABOUT_CONTENT.hero.subtitle;
+        }
+    }
+    
+    // Update asset references from CONFIG
+    if (typeof CONFIG !== 'undefined') {
+        // Update all CV links using the config asset path
+        const cvLinks = document.querySelectorAll('a[href*="Resume"][href$=".pdf"]');
+        cvLinks.forEach(link => {
+            link.setAttribute('href', CONFIG.assets.cv);
+        });
+        
+        // Update CV viewer
+        const cvObject = document.getElementById('cvObject');
+        if (cvObject) {
+            cvObject.setAttribute('data', CONFIG.assets.cv);
+        }
+        
+        // Update Google Scholar link if provided
+        const googleScholarLink = document.getElementById('googleScholarLink');
+        if (googleScholarLink) {
+            if (CONFIG.contact.social.googleScholar) {
+                googleScholarLink.setAttribute('href', CONFIG.contact.social.googleScholar);
+                googleScholarLink.setAttribute('target', '_blank');
+            } else {
+                // Hide Google Scholar card if URL not provided
+                googleScholarLink.classList.add('hidden');
+            }
+        }
+        
+        // Update profile picture if element exists
+        const profilePicture = document.querySelector('.profile-picture img');
+        if (profilePicture) {
+            profilePicture.setAttribute('src', CONFIG.assets.profilePicture);
+        }
+    }
+})();
+
 console.log('Website loaded successfully! 🚀');
