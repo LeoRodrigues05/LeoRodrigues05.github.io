@@ -212,7 +212,7 @@ document.querySelectorAll('a[href="#"]').forEach(link => {
                 googleScholarLink.setAttribute('target', '_blank');
             } else {
                 // Hide Google Scholar card if URL not provided
-                googleScholarLink.style.display = 'none';
+                googleScholarLink.classList.add('hidden');
             }
         }
         
