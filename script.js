@@ -172,53 +172,79 @@ document.querySelectorAll('a[href="#"]').forEach(link => {
     });
 });
 
-// Initialize config-based updates immediately (script is loaded at end of body)
-(function initializeConfig() {
+// Initialize page with config values
+function initializeConfigValues() {
+    if (typeof CONFIG === 'undefined') {
+        console.error('CONFIG is not defined. Make sure config.js is loaded before script.js');
+        return;
+    }
+
+    // Update all elements with data-config-src attribute (for img src, object data, iframe src)
+    document.querySelectorAll('[data-config-src]').forEach(element => {
+        const configKey = element.getAttribute('data-config-src');
+        const assetPath = CONFIG.assets[configKey];
+        
+        if (assetPath) {
+            if (element.tagName === 'IMG') {
+                element.src = assetPath;
+            } else if (element.tagName === 'OBJECT') {
+                element.setAttribute('data', assetPath);
+            } else if (element.tagName === 'IFRAME') {
+                element.src = assetPath;
+            }
+        } else {
+            console.warn(`Config key "${configKey}" not found in CONFIG.assets`);
+        }
+    });
+
+    // Update all elements with data-config-href attribute (for anchor hrefs)
+    document.querySelectorAll('[data-config-href]').forEach(element => {
+        const configKey = element.getAttribute('data-config-href');
+        let value;
+
+        // Check if it's in assets or social links
+        if (CONFIG.assets[configKey]) {
+            value = CONFIG.assets[configKey];
+        } else if (CONFIG.contact.social[configKey]) {
+            value = CONFIG.contact.social[configKey];
+        }
+
+        if (value) {
+            element.href = value;
+            
+            // Show Google Scholar link if URL is provided
+            if (configKey === 'googleScholar' && element.id === 'googleScholarLink') {
+                element.classList.remove('hidden');
+            }
+        } else {
+            // Hide Google Scholar link if no URL provided
+            if (configKey === 'googleScholar' && element.id === 'googleScholarLink') {
+                element.classList.add('hidden');
+            }
+            console.warn(`Config key "${configKey}" not found in CONFIG`);
+        }
+    });
+
     // Update hero content from content.js
     if (typeof ABOUT_CONTENT !== 'undefined') {
-        const heroDescription = document.querySelector('.hero-description');
-        if (heroDescription) {
-            heroDescription.textContent = ABOUT_CONTENT.hero.description;
-        }
-        
         const heroSubtitle = document.querySelector('.hero-subtitle');
         if (heroSubtitle) {
             heroSubtitle.textContent = ABOUT_CONTENT.hero.subtitle;
         }
-    }
-    
-    // Update asset references from CONFIG
-    if (typeof CONFIG !== 'undefined') {
-        // Update all CV links using the config asset path
-        const cvLinks = document.querySelectorAll('a[href*="Resume"][href$=".pdf"]');
-        cvLinks.forEach(link => {
-            link.setAttribute('href', CONFIG.assets.cv);
-        });
-        
-        // Update CV viewer
-        const cvObject = document.getElementById('cvObject');
-        if (cvObject) {
-            cvObject.setAttribute('data', CONFIG.assets.cv);
-        }
-        
-        // Update Google Scholar link if provided
-        const googleScholarLink = document.getElementById('googleScholarLink');
-        if (googleScholarLink) {
-            if (CONFIG.contact.social.googleScholar) {
-                googleScholarLink.setAttribute('href', CONFIG.contact.social.googleScholar);
-                googleScholarLink.setAttribute('target', '_blank');
-            } else {
-                // Hide Google Scholar card if URL not provided
-                googleScholarLink.classList.add('hidden');
-            }
-        }
-        
-        // Update profile picture if element exists
-        const profilePicture = document.querySelector('.profile-picture img');
-        if (profilePicture) {
-            profilePicture.setAttribute('src', CONFIG.assets.profilePicture);
+
+        const heroDescription = document.querySelector('.hero-description');
+        if (heroDescription) {
+            heroDescription.textContent = ABOUT_CONTENT.hero.description;
         }
     }
-})();
+}
+
+// Run initialization as soon as DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeConfigValues);
+} else {
+    // DOM is already ready
+    initializeConfigValues();
+}
 
 console.log('Website loaded successfully! 🚀');
