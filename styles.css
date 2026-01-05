@@ -522,7 +522,7 @@ section {
 }
 
 object.cv-viewer {
-    background: #525659;
+    background: var(--text-primary);
 }
 
 .cv-viewer-wrapper::before {

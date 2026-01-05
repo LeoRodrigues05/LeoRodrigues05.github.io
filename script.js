@@ -172,8 +172,8 @@ document.querySelectorAll('a[href="#"]').forEach(link => {
     });
 });
 
-// Load content from content.js when page loads
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize config-based updates immediately (script is loaded at end of body)
+(function initializeConfig() {
     // Update hero content from content.js
     if (typeof ABOUT_CONTENT !== 'undefined') {
         const heroDescription = document.querySelector('.hero-description');
@@ -189,10 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Update asset references from CONFIG
     if (typeof CONFIG !== 'undefined') {
-        // Update all CV links
-        const cvLinks = document.querySelectorAll('a[href*="Resume"]');
+        // Update all CV links using the config asset path
+        const cvLinks = document.querySelectorAll('a[href$=".pdf"]');
         cvLinks.forEach(link => {
-            link.setAttribute('href', CONFIG.assets.cv);
+            const href = link.getAttribute('href');
+            if (href && href.includes('Resume')) {
+                link.setAttribute('href', CONFIG.assets.cv);
+            }
         });
         
         // Update CV viewer
@@ -203,11 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update Google Scholar link if provided
         const googleScholarLink = document.getElementById('googleScholarLink');
-        if (googleScholarLink && CONFIG.contact.social.googleScholar) {
-            googleScholarLink.setAttribute('href', CONFIG.contact.social.googleScholar);
-        } else if (googleScholarLink && !CONFIG.contact.social.googleScholar) {
-            // Hide Google Scholar card if URL not provided
-            googleScholarLink.style.display = 'none';
+        if (googleScholarLink) {
+            if (CONFIG.contact.social.googleScholar) {
+                googleScholarLink.setAttribute('href', CONFIG.contact.social.googleScholar);
+                googleScholarLink.setAttribute('target', '_blank');
+            } else {
+                // Hide Google Scholar card if URL not provided
+                googleScholarLink.style.display = 'none';
+            }
         }
         
         // Update profile picture if element exists
@@ -216,27 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
             profilePicture.setAttribute('src', CONFIG.assets.profilePicture);
         }
     }
-});
-
-// CV Download functionality with validation
-const downloadButtons = document.querySelectorAll('a[download]');
-downloadButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && href.includes('Resume')) {
-            // Check if file exists by attempting to fetch it
-            fetch(href, { method: 'HEAD' })
-                .then(response => {
-                    if (!response.ok) {
-                        e.preventDefault();
-                        alert('CV file not found. Please make sure the PDF is uploaded to your repository.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error checking CV file:', error);
-                });
-        }
-    });
-});
+})();
 
 console.log('Website loaded successfully! 🚀');
