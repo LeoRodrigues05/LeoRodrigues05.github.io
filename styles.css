@@ -756,7 +756,3 @@ object.cv-viewer {
 .hidden {
     display: none !important;
 }
-
-.contact-card-link.hidden {
-    display: none;
-}
