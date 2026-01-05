@@ -518,6 +518,11 @@ section {
     height: 800px;
     border: none;
     display: block;
+    border-radius: 8px;
+}
+
+object.cv-viewer {
+    background: #525659;
 }
 
 .cv-viewer-wrapper::before {
@@ -566,6 +571,13 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
+    justify-items: center;
+}
+
+.contact-card-link {
+    text-decoration: none;
+    width: 100%;
+    max-width: 250px;
 }
 
 .contact-card {
@@ -575,6 +587,11 @@ section {
     text-align: center;
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .contact-card:hover {
@@ -590,21 +607,8 @@ section {
 .contact-card h3 {
     font-size: 1.125rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin: 0;
     color: var(--text-primary);
-}
-
-.contact-card a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    display: block;
-    margin-top: 0.25rem;
-}
-
-.contact-card a:hover {
-    color: var(--secondary-color);
 }
 
 /* Footer */

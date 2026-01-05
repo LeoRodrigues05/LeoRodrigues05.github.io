@@ -23,6 +23,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Load content from content.js and config.js when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Update hero description from content.js
+    if (typeof ABOUT_CONTENT !== 'undefined') {
+        const heroDescription = document.querySelector('.hero-description');
+        if (heroDescription) {
+            heroDescription.textContent = ABOUT_CONTENT.hero.description;
+        }
+        
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (heroSubtitle) {
+            heroSubtitle.textContent = ABOUT_CONTENT.hero.subtitle;
+        }
+    }
+    
+    // Update CV references from CONFIG
+    if (typeof CONFIG !== 'undefined') {
+        // Update CV download buttons
+        const cvButtons = document.querySelectorAll('a[href*="Resume"]');
+        cvButtons.forEach(btn => {
+            btn.setAttribute('href', CONFIG.assets.cv);
+        });
+        
+        // Update CV viewer source
+        const cvViewerObject = document.querySelector('object.cv-viewer');
+        if (cvViewerObject) {
+            cvViewerObject.setAttribute('data', CONFIG.assets.cv);
+        }
+        
+        const cvViewerIframe = document.querySelector('iframe.cv-viewer');
+        if (cvViewerIframe) {
+            cvViewerIframe.setAttribute('src', CONFIG.assets.cv);
+        }
+        
+        // Update Google Scholar link if configured
+        const googleScholarLink = document.getElementById('googleScholarLink');
+        if (googleScholarLink && CONFIG.contact.social.googleScholar) {
+            googleScholarLink.setAttribute('href', CONFIG.contact.social.googleScholar);
+        } else if (googleScholarLink && !CONFIG.contact.social.googleScholar) {
+            // Hide Google Scholar card if URL is not configured
+            googleScholarLink.style.display = 'none';
+        }
+    }
+});
+
 // Mobile menu toggle
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navLinks = document.querySelector('.nav-links');
