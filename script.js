@@ -190,12 +190,9 @@ document.querySelectorAll('a[href="#"]').forEach(link => {
     // Update asset references from CONFIG
     if (typeof CONFIG !== 'undefined') {
         // Update all CV links using the config asset path
-        const cvLinks = document.querySelectorAll('a[href$=".pdf"]');
+        const cvLinks = document.querySelectorAll('a[href*="Resume"][href$=".pdf"]');
         cvLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.includes('Resume')) {
-                link.setAttribute('href', CONFIG.assets.cv);
-            }
+            link.setAttribute('href', CONFIG.assets.cv);
         });
         
         // Update CV viewer
