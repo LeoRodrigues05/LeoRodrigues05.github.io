@@ -13,10 +13,16 @@ const CONTENT = {
     // Education Section - Add or remove education entries here
     education: [
         {
-            degree: "Master's in Machine Learning",
+            degree: "MSc. Computer Science",
             institution: "Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)",
-            period: "2023 - Present",
-            description: "Specializing in Computer Vision and Self-Supervised Learning. Research focus on video understanding, efficient AI systems, and learning visual representations without manual annotations."
+            period: "2025 - Present",
+            description: "Specialization in Computer Science. Research focus on interpretability in reasoning models, model biology, and efficient AI systems."
+        },
+        {
+            degree: "B.Tech Computer Science",
+            institution: "National Institute of Technology, Rourkela",
+            period: "2019 - 2023",
+            description: "Specialization in Computer Science. Research focus on Neural Machine Translation (NMT) for Indic Languages."
         }
         // Add more education entries here (don't forget the comma above if adding more):
         // {
