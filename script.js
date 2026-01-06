@@ -225,18 +225,237 @@ function initializeConfigValues() {
         }
     });
 
-    // Update hero content from content.js
-    if (typeof ABOUT_CONTENT !== 'undefined') {
-        const heroSubtitle = document.querySelector('.hero-subtitle');
-        if (heroSubtitle) {
-            heroSubtitle.textContent = ABOUT_CONTENT.hero.subtitle;
-        }
-
-        const heroDescription = document.querySelector('.hero-description');
-        if (heroDescription) {
-            heroDescription.textContent = ABOUT_CONTENT.hero.description;
-        }
+    // Update content from content.js
+    if (typeof CONTENT !== 'undefined') {
+        initializeContent();
     }
+}
+
+// Initialize all content from content.js
+function initializeContent() {
+    if (typeof CONTENT === 'undefined') {
+        console.error('CONTENT is not defined. Make sure content.js is loaded before script.js');
+        return;
+    }
+
+    // Update About Me section
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle && CONTENT.aboutMe.title) {
+        heroSubtitle.textContent = CONTENT.aboutMe.title;
+    }
+
+    const heroDescription = document.querySelector('.hero-description');
+    if (heroDescription && CONTENT.aboutMe.description) {
+        heroDescription.textContent = CONTENT.aboutMe.description;
+    }
+
+    // Update Education section
+    initializeEducation();
+
+    // Update Projects section
+    initializeProjects();
+
+    // Update Research Interests section
+    initializeResearchInterests();
+
+    // Update Skills section
+    initializeSkills();
+}
+
+// Initialize Education timeline
+function initializeEducation() {
+    if (!CONTENT.education || CONTENT.education.length === 0) return;
+
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+
+    // Clear existing timeline items
+    timeline.replaceChildren();
+
+    // Add education entries from content.js
+    CONTENT.education.forEach(edu => {
+        if (!edu || !edu.degree || !edu.institution) return; // Skip invalid entries
+        
+        const timelineItem = document.createElement('div');
+        timelineItem.className = 'timeline-item';
+        
+        const degreeH4 = document.createElement('h4');
+        degreeH4.textContent = edu.degree;
+        
+        const metaPara = document.createElement('p');
+        metaPara.className = 'timeline-meta';
+        metaPara.textContent = `${edu.institution} | ${edu.period || ''}`;
+        
+        const descPara = document.createElement('p');
+        descPara.textContent = edu.description || '';
+        
+        const content = document.createElement('div');
+        content.className = 'timeline-content';
+        content.appendChild(degreeH4);
+        content.appendChild(metaPara);
+        content.appendChild(descPara);
+        
+        const dot = document.createElement('div');
+        dot.className = 'timeline-dot';
+        
+        timelineItem.appendChild(dot);
+        timelineItem.appendChild(content);
+        timeline.appendChild(timelineItem);
+    });
+}
+
+// Initialize Projects grid
+function initializeProjects() {
+    if (!CONTENT.projects || CONTENT.projects.length === 0) return;
+
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (!projectsGrid) return;
+
+    // Clear existing projects
+    projectsGrid.replaceChildren();
+
+    // Add project cards from content.js
+    CONTENT.projects.forEach(project => {
+        if (!project || !project.title) return; // Skip invalid entries
+        
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        const categories = project.categories || [];
+        projectCard.setAttribute('data-category', categories.join(' '));
+        
+        // Create project image
+        const projectImage = document.createElement('div');
+        projectImage.className = 'project-image';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'project-placeholder';
+        placeholder.textContent = project.icon || '📝';
+        projectImage.appendChild(placeholder);
+        
+        // Create project content
+        const projectContent = document.createElement('div');
+        projectContent.className = 'project-content';
+        
+        const title = document.createElement('h3');
+        title.className = 'project-title';
+        title.textContent = project.title;
+        
+        const desc = document.createElement('p');
+        desc.className = 'project-description';
+        desc.textContent = project.description || '';
+        
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'project-tags';
+        const tags = project.tags || [];
+        tags.forEach(tag => {
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'tag';
+            tagSpan.textContent = tag;
+            tagsDiv.appendChild(tagSpan);
+        });
+        
+        const linksDiv = document.createElement('div');
+        linksDiv.className = 'project-links';
+        const link = document.createElement('a');
+        // Validate URL to prevent javascript: injection
+        const safeLink = project.link && (project.link.startsWith('http://') || project.link.startsWith('https://') || project.link.startsWith('/')) 
+            ? project.link 
+            : '#';
+        link.href = safeLink;
+        link.className = 'project-link';
+        link.textContent = 'View on GitHub →';
+        linksDiv.appendChild(link);
+        
+        projectContent.appendChild(title);
+        projectContent.appendChild(desc);
+        projectContent.appendChild(tagsDiv);
+        projectContent.appendChild(linksDiv);
+        
+        projectCard.appendChild(projectImage);
+        projectCard.appendChild(projectContent);
+        projectsGrid.appendChild(projectCard);
+
+        // Apply fade-in animation
+        projectCard.style.opacity = '0';
+        projectCard.style.transform = 'translateY(30px)';
+        projectCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(projectCard);
+    });
+}
+
+// Initialize Research Interests
+function initializeResearchInterests() {
+    if (!CONTENT.researchInterests || CONTENT.researchInterests.length === 0) return;
+
+    const interestsGrid = document.querySelector('.interests-grid');
+    if (!interestsGrid) return;
+
+    // Clear existing interests
+    interestsGrid.replaceChildren();
+
+    // Add interest cards from content.js
+    CONTENT.researchInterests.forEach(interest => {
+        if (!interest || !interest.title) return; // Skip invalid entries
+        
+        const interestCard = document.createElement('div');
+        interestCard.className = 'interest-card';
+        
+        const icon = document.createElement('div');
+        icon.className = 'interest-icon';
+        icon.textContent = interest.icon || '📚';
+        
+        const title = document.createElement('h4');
+        title.textContent = interest.title;
+        
+        const desc = document.createElement('p');
+        desc.textContent = interest.description || '';
+        
+        interestCard.appendChild(icon);
+        interestCard.appendChild(title);
+        interestCard.appendChild(desc);
+        interestsGrid.appendChild(interestCard);
+
+        // Apply fade-in animation
+        interestCard.style.opacity = '0';
+        interestCard.style.transform = 'translateY(30px)';
+        interestCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(interestCard);
+    });
+}
+
+// Initialize Skills section
+function initializeSkills() {
+    if (!CONTENT.skills) return;
+
+    const skillsGrid = document.querySelector('.skills-grid');
+    if (!skillsGrid) return;
+
+    // Clear existing skills
+    skillsGrid.replaceChildren();
+
+    // Add skill categories from content.js
+    Object.entries(CONTENT.skills).forEach(([category, skills]) => {
+        if (!skills || !Array.isArray(skills)) return; // Skip invalid entries
+        
+        const skillCategory = document.createElement('div');
+        skillCategory.className = 'skill-category';
+        
+        const title = document.createElement('h4');
+        title.textContent = category;
+        
+        const skillTags = document.createElement('div');
+        skillTags.className = 'skill-tags';
+        
+        skills.forEach(skill => {
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'skill-tag';
+            tagSpan.textContent = skill;
+            skillTags.appendChild(tagSpan);
+        });
+        
+        skillCategory.appendChild(title);
+        skillCategory.appendChild(skillTags);
+        skillsGrid.appendChild(skillCategory);
+    });
 }
 
 // Run initialization as soon as DOM is ready
