@@ -270,7 +270,7 @@ function initializeEducation() {
     if (!timeline) return;
 
     // Clear existing timeline items
-    timeline.innerHTML = '';
+    timeline.replaceChildren();
 
     // Add education entries from content.js
     CONTENT.education.forEach(edu => {
@@ -312,7 +312,7 @@ function initializeProjects() {
     if (!projectsGrid) return;
 
     // Clear existing projects
-    projectsGrid.innerHTML = '';
+    projectsGrid.replaceChildren();
 
     // Add project cards from content.js
     CONTENT.projects.forEach(project => {
@@ -356,7 +356,11 @@ function initializeProjects() {
         const linksDiv = document.createElement('div');
         linksDiv.className = 'project-links';
         const link = document.createElement('a');
-        link.href = project.link || '#';
+        // Validate URL to prevent javascript: injection
+        const safeLink = project.link && (project.link.startsWith('http://') || project.link.startsWith('https://') || project.link.startsWith('/')) 
+            ? project.link 
+            : '#';
+        link.href = safeLink;
         link.className = 'project-link';
         link.textContent = 'View on GitHub →';
         linksDiv.appendChild(link);
@@ -386,7 +390,7 @@ function initializeResearchInterests() {
     if (!interestsGrid) return;
 
     // Clear existing interests
-    interestsGrid.innerHTML = '';
+    interestsGrid.replaceChildren();
 
     // Add interest cards from content.js
     CONTENT.researchInterests.forEach(interest => {
@@ -426,7 +430,7 @@ function initializeSkills() {
     if (!skillsGrid) return;
 
     // Clear existing skills
-    skillsGrid.innerHTML = '';
+    skillsGrid.replaceChildren();
 
     // Add skill categories from content.js
     Object.entries(CONTENT.skills).forEach(([category, skills]) => {
