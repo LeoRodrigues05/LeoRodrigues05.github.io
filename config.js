@@ -3,7 +3,7 @@ const CONFIG = {
     // Asset file names
     assets: {
         cv: 'Research_CV_LeoRodrigues_2025.pdf',
-        profilePicture: 'profile_picture.jpeg',
+        profilePicture: 'profile_picture1.jpeg',
         cvHtml: 'Resume_LeoRodrigues_2025.html' // Keep for backwards compatibility
     },
     
