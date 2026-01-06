@@ -1,18 +1,118 @@
-// Content configuration for About Me section
-const ABOUT_CONTENT = {
-    hero: {
-        subtitle: "Master's Student in Machine Learning | Computer Vision Researcher",
-        description: "I'm a first year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Machine Learning and Computer Vision. My research focuses on self-supervised learning, video understanding, and efficient AI systems that push the boundaries of intelligent visual perception."
+// Content configuration for the website
+// Edit this file to update the About Me section, Education, Projects, and Research content
+
+const CONTENT = {
+    // About Me Section
+    aboutMe: {
+        name: "Leo Rodrigues",
+        title: "Master's Student in Computer Science",
+        // Edit this paragraph to update the About Me section on the homepage
+        description: "I'm a first year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science. My research focuses on self-supervised learning, video understanding, and efficient AI systems that push the boundaries of intelligent visual perception."
     },
-    
-    // User can easily edit this section to add more personalized content
-    biography: {
-        short: "First year Master's student at MBZUAI focusing on ML and Computer Vision",
-        detailed: "Add more detailed information about your background, research interests, and academic journey here. This content can be easily updated by editing the content.js file."
+
+    // Education Section - Add or remove education entries here
+    education: [
+        {
+            degree: "Master's in Machine Learning",
+            institution: "Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)",
+            period: "2023 - Present",
+            description: "Specializing in Computer Vision and Self-Supervised Learning. Research focus on video understanding, efficient AI systems, and learning visual representations without manual annotations."
+        }
+        // Add more education entries here:
+        // {
+        //     degree: "Bachelor's in Computer Science",
+        //     institution: "University Name",
+        //     period: "2019 - 2023",
+        //     description: "Description of your undergraduate studies..."
+        // }
+    ],
+
+    // Projects and Research - Add or remove project entries here
+    projects: [
+        {
+            title: "Self-Supervised Visual Learning",
+            description: "Research on self-supervised learning methods for visual representation learning. Developing novel approaches to learn robust visual features without labeled data.",
+            categories: ["self-supervised", "computer-vision"],
+            tags: ["PyTorch", "Self-Supervised Learning", "Computer Vision"],
+            icon: "🔬",
+            link: "https://github.com/LeoRodrigues05"
+        },
+        {
+            title: "Video Understanding Systems",
+            description: "Advanced video analysis using deep learning for temporal understanding, action recognition, and event detection in video sequences.",
+            categories: ["video", "computer-vision"],
+            tags: ["Video Analysis", "Deep Learning", "Temporal Modeling"],
+            icon: "🎥",
+            link: "https://github.com/LeoRodrigues05"
+        },
+        {
+            title: "Efficient Computer Vision Models",
+            description: "Research on developing efficient and lightweight computer vision architectures optimized for real-world deployment and edge devices.",
+            categories: ["computer-vision"],
+            tags: ["Model Efficiency", "Computer Vision", "Edge AI"],
+            icon: "👁️",
+            link: "https://github.com/LeoRodrigues05"
+        },
+        {
+            title: "Contrastive Learning Research",
+            description: "Investigating contrastive learning approaches for representation learning, exploring novel loss functions and training strategies.",
+            categories: ["self-supervised"],
+            tags: ["Contrastive Learning", "Representation Learning", "PyTorch"],
+            icon: "🧠",
+            link: "https://github.com/LeoRodrigues05"
+        },
+        {
+            title: "Self-Supervised Video Representation",
+            description: "Developing self-supervised methods for learning video representations without manual annotations, focusing on temporal coherence and motion patterns.",
+            categories: ["video", "self-supervised"],
+            tags: ["Video Learning", "Self-Supervised", "Temporal Reasoning"],
+            icon: "🎬",
+            link: "https://github.com/LeoRodrigues05"
+        },
+        {
+            title: "Visual Recognition Systems",
+            description: "Advanced object detection and recognition systems using state-of-the-art deep learning architectures for various computer vision applications.",
+            categories: ["computer-vision"],
+            tags: ["Object Detection", "Recognition", "Deep Learning"],
+            icon: "🔍",
+            link: "https://github.com/LeoRodrigues05"
+        }
+    ],
+
+    // Research Interests - Add or remove research interest areas here
+    researchInterests: [
+        {
+            title: "Computer Vision",
+            icon: "👁️",
+            description: "Visual recognition, object detection, and understanding visual content from images and videos"
+        },
+        {
+            title: "Self-Supervised Learning",
+            icon: "🔬",
+            description: "Learning robust representations from unlabeled data without manual annotations"
+        },
+        {
+            title: "Video Understanding",
+            icon: "🎥",
+            description: "Temporal modeling, action recognition, and understanding dynamic visual content"
+        },
+        {
+            title: "Efficient AI Systems",
+            icon: "⚡",
+            description: "Developing lightweight models for edge deployment and real-world applications"
+        }
+    ],
+
+    // Skills and Technologies - Add or remove skills here
+    skills: {
+        "Programming Languages": ["Python", "C++", "CUDA", "Shell"],
+        "AI/ML Frameworks": ["PyTorch", "TensorFlow", "OpenCV", "Scikit-learn"],
+        "Research Areas": ["Computer Vision", "Self-Supervised Learning", "Video Understanding", "Deep Learning"],
+        "Tools & Platforms": ["Git", "Docker", "Linux", "Jupyter"]
     }
 };
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ABOUT_CONTENT;
+    module.exports = CONTENT;
 }

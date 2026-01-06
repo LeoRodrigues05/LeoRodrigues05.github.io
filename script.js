@@ -225,18 +225,172 @@ function initializeConfigValues() {
         }
     });
 
-    // Update hero content from content.js
-    if (typeof ABOUT_CONTENT !== 'undefined') {
-        const heroSubtitle = document.querySelector('.hero-subtitle');
-        if (heroSubtitle) {
-            heroSubtitle.textContent = ABOUT_CONTENT.hero.subtitle;
-        }
-
-        const heroDescription = document.querySelector('.hero-description');
-        if (heroDescription) {
-            heroDescription.textContent = ABOUT_CONTENT.hero.description;
-        }
+    // Update content from content.js
+    if (typeof CONTENT !== 'undefined') {
+        initializeContent();
     }
+}
+
+// Initialize all content from content.js
+function initializeContent() {
+    if (typeof CONTENT === 'undefined') {
+        console.error('CONTENT is not defined. Make sure content.js is loaded before script.js');
+        return;
+    }
+
+    // Update About Me section
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle && CONTENT.aboutMe.title) {
+        heroSubtitle.textContent = CONTENT.aboutMe.title;
+    }
+
+    const heroDescription = document.querySelector('.hero-description');
+    if (heroDescription && CONTENT.aboutMe.description) {
+        heroDescription.textContent = CONTENT.aboutMe.description;
+    }
+
+    // Update Education section
+    initializeEducation();
+
+    // Update Projects section
+    initializeProjects();
+
+    // Update Research Interests section
+    initializeResearchInterests();
+
+    // Update Skills section
+    initializeSkills();
+}
+
+// Initialize Education timeline
+function initializeEducation() {
+    if (!CONTENT.education || CONTENT.education.length === 0) return;
+
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+
+    // Clear existing timeline items
+    timeline.innerHTML = '';
+
+    // Add education entries from content.js
+    CONTENT.education.forEach(edu => {
+        const timelineItem = document.createElement('div');
+        timelineItem.className = 'timeline-item';
+        
+        timelineItem.innerHTML = `
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h4>${edu.degree}</h4>
+                <p class="timeline-meta">${edu.institution} | ${edu.period}</p>
+                <p>${edu.description}</p>
+            </div>
+        `;
+        
+        timeline.appendChild(timelineItem);
+    });
+}
+
+// Initialize Projects grid
+function initializeProjects() {
+    if (!CONTENT.projects || CONTENT.projects.length === 0) return;
+
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (!projectsGrid) return;
+
+    // Clear existing projects
+    projectsGrid.innerHTML = '';
+
+    // Add project cards from content.js
+    CONTENT.projects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        projectCard.setAttribute('data-category', project.categories.join(' '));
+        
+        const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+        
+        projectCard.innerHTML = `
+            <div class="project-image">
+                <div class="project-placeholder">${project.icon}</div>
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+                <div class="project-tags">
+                    ${tagsHTML}
+                </div>
+                <div class="project-links">
+                    <a href="${project.link}" class="project-link">View on GitHub →</a>
+                </div>
+            </div>
+        `;
+        
+        projectsGrid.appendChild(projectCard);
+
+        // Apply fade-in animation
+        projectCard.style.opacity = '0';
+        projectCard.style.transform = 'translateY(30px)';
+        projectCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(projectCard);
+    });
+}
+
+// Initialize Research Interests
+function initializeResearchInterests() {
+    if (!CONTENT.researchInterests || CONTENT.researchInterests.length === 0) return;
+
+    const interestsGrid = document.querySelector('.interests-grid');
+    if (!interestsGrid) return;
+
+    // Clear existing interests
+    interestsGrid.innerHTML = '';
+
+    // Add interest cards from content.js
+    CONTENT.researchInterests.forEach(interest => {
+        const interestCard = document.createElement('div');
+        interestCard.className = 'interest-card';
+        
+        interestCard.innerHTML = `
+            <div class="interest-icon">${interest.icon}</div>
+            <h4>${interest.title}</h4>
+            <p>${interest.description}</p>
+        `;
+        
+        interestsGrid.appendChild(interestCard);
+
+        // Apply fade-in animation
+        interestCard.style.opacity = '0';
+        interestCard.style.transform = 'translateY(30px)';
+        interestCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(interestCard);
+    });
+}
+
+// Initialize Skills section
+function initializeSkills() {
+    if (!CONTENT.skills) return;
+
+    const skillsGrid = document.querySelector('.skills-grid');
+    if (!skillsGrid) return;
+
+    // Clear existing skills
+    skillsGrid.innerHTML = '';
+
+    // Add skill categories from content.js
+    Object.entries(CONTENT.skills).forEach(([category, skills]) => {
+        const skillCategory = document.createElement('div');
+        skillCategory.className = 'skill-category';
+        
+        const skillTagsHTML = skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('');
+        
+        skillCategory.innerHTML = `
+            <h4>${category}</h4>
+            <div class="skill-tags">
+                ${skillTagsHTML}
+            </div>
+        `;
+        
+        skillsGrid.appendChild(skillCategory);
+    });
 }
 
 // Run initialization as soon as DOM is ready
