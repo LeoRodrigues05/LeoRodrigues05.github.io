@@ -279,7 +279,6 @@ function initializeEducation() {
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
         
-        const degree = document.createTextNode('');
         const degreeH4 = document.createElement('h4');
         degreeH4.textContent = edu.degree;
         
