@@ -274,18 +274,33 @@ function initializeEducation() {
 
     // Add education entries from content.js
     CONTENT.education.forEach(edu => {
+        if (!edu || !edu.degree || !edu.institution) return; // Skip invalid entries
+        
         const timelineItem = document.createElement('div');
         timelineItem.className = 'timeline-item';
         
-        timelineItem.innerHTML = `
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <h4>${edu.degree}</h4>
-                <p class="timeline-meta">${edu.institution} | ${edu.period}</p>
-                <p>${edu.description}</p>
-            </div>
-        `;
+        const degree = document.createTextNode('');
+        const degreeH4 = document.createElement('h4');
+        degreeH4.textContent = edu.degree;
         
+        const metaPara = document.createElement('p');
+        metaPara.className = 'timeline-meta';
+        metaPara.textContent = `${edu.institution} | ${edu.period || ''}`;
+        
+        const descPara = document.createElement('p');
+        descPara.textContent = edu.description || '';
+        
+        const content = document.createElement('div');
+        content.className = 'timeline-content';
+        content.appendChild(degreeH4);
+        content.appendChild(metaPara);
+        content.appendChild(descPara);
+        
+        const dot = document.createElement('div');
+        dot.className = 'timeline-dot';
+        
+        timelineItem.appendChild(dot);
+        timelineItem.appendChild(content);
         timeline.appendChild(timelineItem);
     });
 }
@@ -302,28 +317,58 @@ function initializeProjects() {
 
     // Add project cards from content.js
     CONTENT.projects.forEach(project => {
+        if (!project || !project.title) return; // Skip invalid entries
+        
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
-        projectCard.setAttribute('data-category', project.categories.join(' '));
+        const categories = project.categories || [];
+        projectCard.setAttribute('data-category', categories.join(' '));
         
-        const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+        // Create project image
+        const projectImage = document.createElement('div');
+        projectImage.className = 'project-image';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'project-placeholder';
+        placeholder.textContent = project.icon || '📝';
+        projectImage.appendChild(placeholder);
         
-        projectCard.innerHTML = `
-            <div class="project-image">
-                <div class="project-placeholder">${project.icon}</div>
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">${project.title}</h3>
-                <p class="project-description">${project.description}</p>
-                <div class="project-tags">
-                    ${tagsHTML}
-                </div>
-                <div class="project-links">
-                    <a href="${project.link}" class="project-link">View on GitHub →</a>
-                </div>
-            </div>
-        `;
+        // Create project content
+        const projectContent = document.createElement('div');
+        projectContent.className = 'project-content';
         
+        const title = document.createElement('h3');
+        title.className = 'project-title';
+        title.textContent = project.title;
+        
+        const desc = document.createElement('p');
+        desc.className = 'project-description';
+        desc.textContent = project.description || '';
+        
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'project-tags';
+        const tags = project.tags || [];
+        tags.forEach(tag => {
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'tag';
+            tagSpan.textContent = tag;
+            tagsDiv.appendChild(tagSpan);
+        });
+        
+        const linksDiv = document.createElement('div');
+        linksDiv.className = 'project-links';
+        const link = document.createElement('a');
+        link.href = project.link || '#';
+        link.className = 'project-link';
+        link.textContent = 'View on GitHub →';
+        linksDiv.appendChild(link);
+        
+        projectContent.appendChild(title);
+        projectContent.appendChild(desc);
+        projectContent.appendChild(tagsDiv);
+        projectContent.appendChild(linksDiv);
+        
+        projectCard.appendChild(projectImage);
+        projectCard.appendChild(projectContent);
         projectsGrid.appendChild(projectCard);
 
         // Apply fade-in animation
@@ -346,15 +391,24 @@ function initializeResearchInterests() {
 
     // Add interest cards from content.js
     CONTENT.researchInterests.forEach(interest => {
+        if (!interest || !interest.title) return; // Skip invalid entries
+        
         const interestCard = document.createElement('div');
         interestCard.className = 'interest-card';
         
-        interestCard.innerHTML = `
-            <div class="interest-icon">${interest.icon}</div>
-            <h4>${interest.title}</h4>
-            <p>${interest.description}</p>
-        `;
+        const icon = document.createElement('div');
+        icon.className = 'interest-icon';
+        icon.textContent = interest.icon || '📚';
         
+        const title = document.createElement('h4');
+        title.textContent = interest.title;
+        
+        const desc = document.createElement('p');
+        desc.textContent = interest.description || '';
+        
+        interestCard.appendChild(icon);
+        interestCard.appendChild(title);
+        interestCard.appendChild(desc);
         interestsGrid.appendChild(interestCard);
 
         // Apply fade-in animation
@@ -377,18 +431,26 @@ function initializeSkills() {
 
     // Add skill categories from content.js
     Object.entries(CONTENT.skills).forEach(([category, skills]) => {
+        if (!skills || !Array.isArray(skills)) return; // Skip invalid entries
+        
         const skillCategory = document.createElement('div');
         skillCategory.className = 'skill-category';
         
-        const skillTagsHTML = skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('');
+        const title = document.createElement('h4');
+        title.textContent = category;
         
-        skillCategory.innerHTML = `
-            <h4>${category}</h4>
-            <div class="skill-tags">
-                ${skillTagsHTML}
-            </div>
-        `;
+        const skillTags = document.createElement('div');
+        skillTags.className = 'skill-tags';
         
+        skills.forEach(skill => {
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'skill-tag';
+            tagSpan.textContent = skill;
+            skillTags.appendChild(tagSpan);
+        });
+        
+        skillCategory.appendChild(title);
+        skillCategory.appendChild(skillTags);
         skillsGrid.appendChild(skillCategory);
     });
 }

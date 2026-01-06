@@ -18,7 +18,7 @@ const CONTENT = {
             period: "2023 - Present",
             description: "Specializing in Computer Vision and Self-Supervised Learning. Research focus on video understanding, efficient AI systems, and learning visual representations without manual annotations."
         }
-        // Add more education entries here:
+        // Add more education entries here (don't forget the comma above if adding more):
         // {
         //     degree: "Bachelor's in Computer Science",
         //     institution: "University Name",
