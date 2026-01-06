@@ -7,7 +7,7 @@ const CONTENT = {
         name: "Leo Rodrigues",
         title: "Master's Student in Computer Science",
         // Edit this paragraph to update the About Me section on the homepage
-        description: "I'm a first year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science. My research focuses on self-supervised learning, video understanding, and efficient AI systems that push the boundaries of intelligent visual perception."
+        description: "I'm a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science. My research focuses on self-supervised learning, video understanding, and efficient AI systems that push the boundaries of intelligent visual perception."
     },
 
     // Education Section - Add or remove education entries here
