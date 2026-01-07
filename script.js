@@ -245,8 +245,18 @@ function initializeContent() {
     }
 
     const heroDescription = document.querySelector('.hero-description');
-    if (heroDescription && CONTENT.aboutMe.description) {
-        heroDescription.textContent = CONTENT.aboutMe.description;
+    if (heroDescription) {
+        // Use description_list if available, otherwise fall back to description
+        let descriptionContent = '';
+        if (CONTENT.aboutMe.description_list && Array.isArray(CONTENT.aboutMe.description_list)) {
+            // Concatenate all sentences from description_list with space separation
+            descriptionContent = CONTENT.aboutMe.description_list.join(' ');
+        } else if (CONTENT.aboutMe.description) {
+            descriptionContent = CONTENT.aboutMe.description;
+        }
+        
+        // Use innerHTML to support HTML tags like links
+        heroDescription.innerHTML = descriptionContent;
     }
 
     // Update Education section
@@ -287,7 +297,8 @@ function initializeEducation() {
         metaPara.textContent = `${edu.institution} | ${edu.period || ''}`;
         
         const descPara = document.createElement('p');
-        descPara.textContent = edu.description || '';
+        // Use innerHTML to support HTML tags like links
+        descPara.innerHTML = edu.description || '';
         
         const content = document.createElement('div');
         content.className = 'timeline-content';
@@ -341,7 +352,8 @@ function initializeProjects() {
         
         const desc = document.createElement('p');
         desc.className = 'project-description';
-        desc.textContent = project.description || '';
+        // Use innerHTML to support HTML tags like links
+        desc.innerHTML = project.description || '';
         
         const tagsDiv = document.createElement('div');
         tagsDiv.className = 'project-tags';
@@ -407,7 +419,8 @@ function initializeResearchInterests() {
         title.textContent = interest.title;
         
         const desc = document.createElement('p');
-        desc.textContent = interest.description || '';
+        // Use innerHTML to support HTML tags like links
+        desc.innerHTML = interest.description || '';
         
         interestCard.appendChild(icon);
         interestCard.appendChild(title);

@@ -21,13 +21,33 @@ Edit the `aboutMe` object in `content.js`:
 aboutMe: {
     name: "Leo Rodrigues",
     title: "Master's Student in Computer Science",
-    description: "Your about me paragraph goes here..."
+    description: "Your about me paragraph goes here...",
+    description_list: [
+        "First sentence about yourself.",
+        "Second sentence with additional details.",
+        "Third sentence about your interests.",
+        "Final call to action or closing sentence."
+    ]
 }
 ```
 
 - **name**: Your full name displayed in the hero section
 - **title**: Your current title or position
-- **description**: The main paragraph describing who you are and what you do
+- **description**: (Optional) The main paragraph describing who you are - used as fallback if description_list is not provided
+- **description_list**: (Recommended) An array of sentences that will be concatenated and displayed in the About Me section. This allows better organization of your biography into multiple sentences.
+
+#### Adding Links and References
+
+You can include HTML links in your `description_list`, `description`, or any description field:
+
+```javascript
+description_list: [
+    "I am a student at <a href='https://university.edu' target='_blank'>University Name</a>.",
+    "I work on <a href='https://example.com/research' target='_blank'>important research</a>."
+]
+```
+
+**Important**: Always use single quotes `'` for HTML attributes within the JavaScript strings, and `target='_blank'` to open links in a new tab.
 
 ### 2. Education Section
 
@@ -49,7 +69,7 @@ Each education entry includes:
 - **degree**: The degree or program name
 - **institution**: University or institution name
 - **period**: Time period (e.g., "2023 - Present")
-- **description**: Details about your studies and research focus
+- **description**: Details about your studies and research focus. **Supports HTML links** - you can include `<a href='URL' target='_blank'>link text</a>` for references.
 
 ### 3. Projects and Research
 
@@ -71,7 +91,7 @@ projects: [
 
 Each project includes:
 - **title**: Project name
-- **description**: Brief description of the project
+- **description**: Brief description of the project. **Supports HTML links** - you can include `<a href='URL' target='_blank'>link text</a>` for references.
 - **categories**: Array of categories (used for filtering)
   - Available: `"computer-vision"`, `"self-supervised"`, `"video"`
 - **tags**: Array of technology/topic tags
@@ -96,7 +116,16 @@ researchInterests: [
 Each research interest includes:
 - **title**: Research area name
 - **icon**: Emoji icon
-- **description**: Brief description of the research area
+- **description**: Brief description of the research area. **Supports HTML links** - you can include `<a href='URL' target='_blank'>link text</a>` for references.
+
+**Example with link:**
+```javascript
+{
+    title: "Mechanistic Interpretability",
+    icon: "👁️",
+    description: "Understanding neural networks. Learn more at <a href='https://example.com' target='_blank'>Research Lab</a>."
+}
+```
 
 ### 5. Skills and Technologies
 
