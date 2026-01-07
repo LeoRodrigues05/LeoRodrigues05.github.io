@@ -231,6 +231,35 @@ function initializeConfigValues() {
     }
 }
 
+// Simple HTML sanitizer to prevent XSS attacks
+// Only allows safe tags: a, em, strong, b, i, u, br
+function sanitizeHTML(html) {
+    if (!html) return '';
+    
+    // Create a temporary div to parse HTML
+    const temp = document.createElement('div');
+    temp.textContent = html; // First escape everything
+    
+    // Then replace allowed tags back
+    let sanitized = temp.innerHTML;
+    
+    // Allow <a> tags with href and target attributes
+    sanitized = sanitized.replace(/&lt;a\s+href='([^']*?)'\s+target='_blank'&gt;(.*?)&lt;\/a&gt;/gi, 
+        (match, href, text) => {
+            // Validate URL - only allow http, https, and mailto
+            if (href.match(/^(https?:\/\/|mailto:)/i)) {
+                return `<a href='${href}' target='_blank' rel='noopener noreferrer'>${text}</a>`;
+            }
+            return text; // Return just text if URL is invalid
+        });
+    
+    // Allow basic formatting tags
+    sanitized = sanitized.replace(/&lt;(em|strong|b|i|u)&gt;(.*?)&lt;\/\1&gt;/gi, '<$1>$2</$1>');
+    sanitized = sanitized.replace(/&lt;br\s*\/?&gt;/gi, '<br>');
+    
+    return sanitized;
+}
+
 // Initialize all content from content.js
 function initializeContent() {
     if (typeof CONTENT === 'undefined') {
@@ -256,7 +285,7 @@ function initializeContent() {
         }
         
         // Use innerHTML to support HTML tags like links
-        heroDescription.innerHTML = descriptionContent;
+        heroDescription.innerHTML = sanitizeHTML(descriptionContent);
     }
 
     // Update Education section
@@ -298,7 +327,7 @@ function initializeEducation() {
         
         const descPara = document.createElement('p');
         // Use innerHTML to support HTML tags like links
-        descPara.innerHTML = edu.description || '';
+        descPara.innerHTML = sanitizeHTML(edu.description || '');
         
         const content = document.createElement('div');
         content.className = 'timeline-content';
@@ -353,7 +382,7 @@ function initializeProjects() {
         const desc = document.createElement('p');
         desc.className = 'project-description';
         // Use innerHTML to support HTML tags like links
-        desc.innerHTML = project.description || '';
+        desc.innerHTML = sanitizeHTML(project.description || '');
         
         const tagsDiv = document.createElement('div');
         tagsDiv.className = 'project-tags';
@@ -420,7 +449,7 @@ function initializeResearchInterests() {
         
         const desc = document.createElement('p');
         // Use innerHTML to support HTML tags like links
-        desc.innerHTML = interest.description || '';
+        desc.innerHTML = sanitizeHTML(interest.description || '');
         
         interestCard.appendChild(icon);
         interestCard.appendChild(title);
