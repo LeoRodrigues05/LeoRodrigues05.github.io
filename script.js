@@ -231,6 +231,46 @@ function initializeConfigValues() {
     }
 }
 
+// Simple HTML sanitizer to prevent XSS attacks
+// Only allows safe tags: a, em, strong, b, i, u, br
+function sanitizeHTML(html) {
+    if (!html) return '';
+    
+    // Helper function to escape HTML entities
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
+    // Create a temporary div to parse HTML
+    const temp = document.createElement('div');
+    temp.textContent = html; // First escape everything
+    
+    // Then replace allowed tags back
+    let sanitized = temp.innerHTML;
+    
+    // Allow <a> tags with href and target attributes
+    // Use more restrictive regex for href to only match safe URL patterns
+    sanitized = sanitized.replace(/&lt;a\s+href='(https?:\/\/[^']*?|mailto:[^']*?)'\s+target='_blank'&gt;(.*?)&lt;\/a&gt;/gi, 
+        (match, href, text) => {
+            // Double-check URL validation - only allow http, https, and mailto
+            if (href.match(/^(https?:\/\/|mailto:)/i)) {
+                // href is already escaped from temp.innerHTML, no need to escape again
+                const safeHref = href;
+                const safeText = text; // Already escaped by temp.textContent above
+                return `<a href='${safeHref}' target='_blank' rel='noopener noreferrer'>${safeText}</a>`;
+            }
+            return text; // Return escaped text if URL is invalid
+        });
+    
+    // Allow basic formatting tags - content is already escaped
+    sanitized = sanitized.replace(/&lt;(em|strong|b|i|u)&gt;(.*?)&lt;\/\1&gt;/gi, '<$1>$2</$1>');
+    sanitized = sanitized.replace(/&lt;br\s*\/?&gt;/gi, '<br>');
+    
+    return sanitized;
+}
+
 // Initialize all content from content.js
 function initializeContent() {
     if (typeof CONTENT === 'undefined') {
@@ -245,8 +285,18 @@ function initializeContent() {
     }
 
     const heroDescription = document.querySelector('.hero-description');
-    if (heroDescription && CONTENT.aboutMe.description) {
-        heroDescription.textContent = CONTENT.aboutMe.description;
+    if (heroDescription) {
+        // Use description_list if available, otherwise fall back to description
+        let descriptionContent = '';
+        if (CONTENT.aboutMe.description_list && Array.isArray(CONTENT.aboutMe.description_list)) {
+            // Concatenate all sentences from description_list with space separation
+            descriptionContent = CONTENT.aboutMe.description_list.join(' ');
+        } else if (CONTENT.aboutMe.description) {
+            descriptionContent = CONTENT.aboutMe.description;
+        }
+        
+        // Use innerHTML to support HTML tags like links
+        heroDescription.innerHTML = sanitizeHTML(descriptionContent);
     }
 
     // Update Education section
@@ -287,7 +337,8 @@ function initializeEducation() {
         metaPara.textContent = `${edu.institution} | ${edu.period || ''}`;
         
         const descPara = document.createElement('p');
-        descPara.textContent = edu.description || '';
+        // Use innerHTML to support HTML tags like links
+        descPara.innerHTML = sanitizeHTML(edu.description || '');
         
         const content = document.createElement('div');
         content.className = 'timeline-content';
@@ -341,7 +392,8 @@ function initializeProjects() {
         
         const desc = document.createElement('p');
         desc.className = 'project-description';
-        desc.textContent = project.description || '';
+        // Use innerHTML to support HTML tags like links
+        desc.innerHTML = sanitizeHTML(project.description || '');
         
         const tagsDiv = document.createElement('div');
         tagsDiv.className = 'project-tags';
@@ -407,7 +459,8 @@ function initializeResearchInterests() {
         title.textContent = interest.title;
         
         const desc = document.createElement('p');
-        desc.textContent = interest.description || '';
+        // Use innerHTML to support HTML tags like links
+        desc.innerHTML = sanitizeHTML(interest.description || '');
         
         interestCard.appendChild(icon);
         interestCard.appendChild(title);

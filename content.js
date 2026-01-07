@@ -9,12 +9,13 @@ const CONTENT = {
         // Edit this paragraph to update the About Me section on the homepage
         description: "I am a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science and working with my supervisor Jian Kang.",
         description_list: [
-                      "I am a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science and working with my supervisor Jian Kang.",
+                      "I am a first-year Master's student at <a href='https://mbzuai.ac.ae/' target='_blank'>Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)</a> specializing in Computer Science and working with my supervisor Jian Kang.",
                       "I currently enjoy working on problems related to the Interpretability of Language Models (Like Pragmatic and Applied Interpretability, Model Biology etc). I also like to delve into topics like Machine Translation (in Low Resource Settings), x-AI and efficient AI.", 
-                      "In general I like working on problems that will help change the way we apporach building AI systems such that they're more efficient, safe and accessible. ",
+                      "In general I like working on problems that will help change the way we approach building AI systems such that they're more efficient, safe and accessible. ",
                       "If you think we can work together on anything (not limited to aforementioned topics), please do reach out!" 
                     ]
     },
+    // Note: You can add HTML links using <a href='URL' target='_blank'>text</a> syntax in any description
 
     // Education Section - Add or remove education entries here
     education: [
@@ -96,7 +97,7 @@ const CONTENT = {
         {
             title: "Mechanistic Interpretability",
             icon: "👁️",
-            description: "Interpret model behaviour emperically and reverse engineering model algorithms to infer model behaviour during various situations."
+            description: "Interpret model behaviour empirically and reverse engineering model algorithms to infer model behaviour during various situations. Learn more at <a href='https://www.anthropic.com/news/mechanistic-interpretability' target='_blank'>Anthropic's Research</a>."
         },
         {
             title: "dvadva",
