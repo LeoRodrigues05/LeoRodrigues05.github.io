@@ -251,12 +251,13 @@ function sanitizeHTML(html) {
     let sanitized = temp.innerHTML;
     
     // Allow <a> tags with href and target attributes
-    sanitized = sanitized.replace(/&lt;a\s+href='([^']*?)'\s+target='_blank'&gt;(.*?)&lt;\/a&gt;/gi, 
+    // Use more restrictive regex for href to only match safe URL patterns
+    sanitized = sanitized.replace(/&lt;a\s+href='(https?:\/\/[^']*?|mailto:[^']*?)'\s+target='_blank'&gt;(.*?)&lt;\/a&gt;/gi, 
         (match, href, text) => {
-            // Validate URL - only allow http, https, and mailto
+            // Double-check URL validation - only allow http, https, and mailto
             if (href.match(/^(https?:\/\/|mailto:)/i)) {
-                // Escape href and text to prevent XSS
-                const safeHref = escapeHTML(href);
+                // href is already escaped from temp.innerHTML, no need to escape again
+                const safeHref = href;
                 const safeText = text; // Already escaped by temp.textContent above
                 return `<a href='${safeHref}' target='_blank' rel='noopener noreferrer'>${safeText}</a>`;
             }

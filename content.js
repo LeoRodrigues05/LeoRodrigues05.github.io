@@ -14,8 +14,8 @@ const CONTENT = {
                       "In general I like working on problems that will help change the way we approach building AI systems such that they're more efficient, safe and accessible. ",
                       "If you think we can work together on anything (not limited to aforementioned topics), please do reach out!" 
                     ]
-                    // Note: You can add HTML links using <a href='URL' target='_blank'>text</a> syntax in any description
     },
+    // Note: You can add HTML links using <a href='URL' target='_blank'>text</a> syntax in any description
 
     // Education Section - Add or remove education entries here
     education: [
