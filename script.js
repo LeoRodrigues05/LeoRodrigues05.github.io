@@ -236,6 +236,13 @@ function initializeConfigValues() {
 function sanitizeHTML(html) {
     if (!html) return '';
     
+    // Helper function to escape HTML entities
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
     // Create a temporary div to parse HTML
     const temp = document.createElement('div');
     temp.textContent = html; // First escape everything
@@ -248,12 +255,15 @@ function sanitizeHTML(html) {
         (match, href, text) => {
             // Validate URL - only allow http, https, and mailto
             if (href.match(/^(https?:\/\/|mailto:)/i)) {
-                return `<a href='${href}' target='_blank' rel='noopener noreferrer'>${text}</a>`;
+                // Escape href and text to prevent XSS
+                const safeHref = escapeHTML(href);
+                const safeText = text; // Already escaped by temp.textContent above
+                return `<a href='${safeHref}' target='_blank' rel='noopener noreferrer'>${safeText}</a>`;
             }
-            return text; // Return just text if URL is invalid
+            return text; // Return escaped text if URL is invalid
         });
     
-    // Allow basic formatting tags
+    // Allow basic formatting tags - content is already escaped
     sanitized = sanitized.replace(/&lt;(em|strong|b|i|u)&gt;(.*?)&lt;\/\1&gt;/gi, '<$1>$2</$1>');
     sanitized = sanitized.replace(/&lt;br\s*\/?&gt;/gi, '<br>');
     
