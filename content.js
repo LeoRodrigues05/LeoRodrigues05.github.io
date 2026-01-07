@@ -7,7 +7,13 @@ const CONTENT = {
         name: "Leo Rodrigues",
         title: "Master's Student in Computer Science",
         // Edit this paragraph to update the About Me section on the homepage
-        description: "I'm a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science. My research focuses on self-supervised learning, video understanding, and efficient AI systems that push the boundaries of intelligent visual perception."
+        description: "I am a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science and working with my supervisor Jian Kang.",
+        description_list: [
+                      "I am a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science and working with my supervisor Jian Kang.",
+                      "I currently enjoy working on problems related to the Interpretability of Language Models (Like Pragmatic and Applied Interpretability, Model Biology etc). I also like to delve into topics like Machine Translation (in Low Resource Settings), x-AI and efficient AI.", 
+                      "In general I like working on problems that will help change the way we apporach building AI systems such that they're more efficient, safe and accessible. ",
+                      "If you think we can work together on anything (not limited to aforementioned topics), please do reach out!" 
+                    ]
     },
 
     // Education Section - Add or remove education entries here
@@ -88,17 +94,17 @@ const CONTENT = {
     // Research Interests - Add or remove research interest areas here
     researchInterests: [
         {
-            title: "Computer Vision",
+            title: "Mechanistic Interpretability",
             icon: "👁️",
-            description: "Visual recognition, object detection, and understanding visual content from images and videos"
+            description: "Interpret model behaviour emperically and reverse engineering model algorithms to infer model behaviour during various situations."
         },
         {
-            title: "Self-Supervised Learning",
+            title: "dvadva",
             icon: "🔬",
             description: "Learning robust representations from unlabeled data without manual annotations"
         },
         {
-            title: "Video Understanding",
+            title: "Machine Translation",
             icon: "🎥",
             description: "Temporal modeling, action recognition, and understanding dynamic visual content"
         },
@@ -111,10 +117,10 @@ const CONTENT = {
 
     // Skills and Technologies - Add or remove skills here
     skills: {
-        "Programming Languages": ["Python", "C++", "CUDA", "Shell"],
-        "AI/ML Frameworks": ["PyTorch", "TensorFlow", "OpenCV", "Scikit-learn"],
-        "Research Areas": ["Computer Vision", "Self-Supervised Learning", "Video Understanding", "Deep Learning"],
-        "Tools & Platforms": ["Git", "Docker", "Linux", "Jupyter"]
+        "Programming Languages": ["Python", "C#", "C++", "TypeScript", "Bash", "SQL", "MongoDB", "R", "Java"],
+        "Frameworks": [".NET Microservices", "Angular Plugin", "MongoDB", "PyTorch", "TensorFlow", "Fairseq"],
+        "Research Areas": ["Mechanistic Interpretability", "Model Biology", "Efficient AI", "Machine Translation", "Graph Neural Networks", "Deep Learning"],
+        "Tools & Platforms": ["Git", "Docker", "Linux (MintOS, Ubuntu)", "Jupyter", "AzureML", "Visual Studio 2022", "Visual Studio Code"]
     }
 };
 
