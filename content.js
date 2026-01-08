@@ -9,8 +9,8 @@ const CONTENT = {
         // Edit this paragraph to update the About Me section on the homepage
         description: "I am a first-year Master's student at Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI) specializing in Computer Science and working with my supervisor Jian Kang.",
         description_list: [
-                      "I am a first-year Master's student at <a href='https://mbzuai.ac.ae/' target='_blank'>Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)</a> specializing in Computer Science and working with my supervisor Jian Kang.",
-                      "I currently enjoy working on problems related to the Interpretability of Language Models (Like Pragmatic and Applied Interpretability, Model Biology etc). I also like to delve into topics like Machine Translation (in Low Resource Settings), x-AI and efficient AI.", 
+                      "I am a first-year Master's student at <a href='https://mbzuai.ac.ae/' target='_blank'>Mohamed Bin Zayed University of Artificial Intelligence (MBZUAI)</a> specializing in Computer Science and working with my supervisor <a href='https://jiank2.github.io/'>Jian Kang</a>.",
+                      "I currently enjoy working on problems related to the Interpretability of Language Models (Like <a href='https://www.alignmentforum.org/posts/StENzDcD3kpfGJssR/a-pragmatic-vision-for-interpretability'>Pragmatic</a> and Applied Interpretability, <a href='https://www.alignmentforum.org/posts/MnkeepcGirnJn736j/how-can-interpretability-researchers-help-agi-go-well#Model_Biology'>Model Biology</a> etc). I also like to delve into topics like Machine Translation (in Low Resource Settings), x-AI and efficient AI.", 
                       "In general I like working on problems that will help change the way we approach building AI systems such that they're more efficient, safe and accessible. ",
                       "If you think we can work together on anything (not limited to aforementioned topics), please do reach out!" 
                     ]
@@ -43,15 +43,15 @@ const CONTENT = {
     // Projects and Research - Add or remove project entries here
     projects: [
         {
-            title: "Self-Supervised Visual Learning",
-            description: "Research on self-supervised learning methods for visual representation learning. Developing novel approaches to learn robust visual features without labeled data.",
-            categories: ["self-supervised", "computer-vision"],
-            tags: ["PyTorch", "Self-Supervised Learning", "Computer Vision"],
+            title: "Hierarchical Reasoning Interpretability (Ongoing)",
+            description: "Research on class of models that utilize hierarchical reasoning. Developing novel approaches to interpret model behaviour for different tasks.",
+            categories: ["hierarchical-reasoning", "interpretability"],
+            tags: ["HRM", "Mech Interp"],
             icon: "🔬",
             link: "https://github.com/LeoRodrigues05"
         },
         {
-            title: "Video Understanding Systems",
+            title: "Effects of Back-Translation on Indic Language MT Tasks",
             description: "Advanced video analysis using deep learning for temporal understanding, action recognition, and event detection in video sequences.",
             categories: ["video", "computer-vision"],
             tags: ["Video Analysis", "Deep Learning", "Temporal Modeling"],
@@ -97,17 +97,17 @@ const CONTENT = {
         {
             title: "Mechanistic Interpretability",
             icon: "👁️",
-            description: "Interpret model behaviour empirically and reverse engineering model algorithms to infer model behaviour during various situations. Learn more at <a href='https://www.anthropic.com/news/mechanistic-interpretability' target='_blank'>Anthropic's Research</a>."
+            description: "Reverse engineering model algorithms to infer model behaviour during various situations."
         },
         {
-            title: "dvadva",
+            title: "Model Biology",
             icon: "🔬",
-            description: "Learning robust representations from unlabeled data without manual annotations"
+            description: "Understanding the qualitative properties driving model behaviour under different circumstances"
         },
         {
             title: "Machine Translation",
-            icon: "🎥",
-            description: "Temporal modeling, action recognition, and understanding dynamic visual content"
+            icon: "📜",
+            description: "Low-resource language translation techniques and tasks"
         },
         {
             title: "Efficient AI Systems",
