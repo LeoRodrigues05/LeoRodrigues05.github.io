@@ -13,7 +13,7 @@ const CONTENT = {
                       "I currently enjoy working on problems related to the Interpretability of Language Models (Like <a href='https://www.alignmentforum.org/posts/StENzDcD3kpfGJssR/a-pragmatic-vision-for-interpretability' target='_blank'>Pragmatic</a> and Applied Interpretability, <a href='https://www.alignmentforum.org/posts/MnkeepcGirnJn736j/how-can-interpretability-researchers-help-agi-go-well#Model_Biology' target='_blank'>Model Biology</a> etc). I also like to delve into topics like Machine Translation (in Low Resource Settings), x-AI and efficient AI. <br>", 
                       "In general I like working on problems that will help change the way we approach building AI systems such that they're more efficient, safe and accessible. ",
                       "If you think we can work together on anything (not limited to aforementioned topics), please do reach out!" 
-                    ]
+                    ]  
     },
     // Note: You can add HTML links using <a href='URL' target='_blank'>text</a> syntax in any description
 
@@ -31,13 +31,6 @@ const CONTENT = {
             period: "2019 - 2023",
             description: "Specialization in Computer Science. Research focus on Neural Machine Translation (NMT) for Indic Languages."
         }
-        // Add more education entries here (don't forget the comma above if adding more):
-        // {
-        //     degree: "Bachelor's in Computer Science",
-        //     institution: "University Name",
-        //     period: "2019 - 2023",
-        //     description: "Description of your undergraduate studies..."
-        // }
     ],
 
     // Projects and Research - Add or remove project entries here
@@ -45,48 +38,48 @@ const CONTENT = {
         {
             title: "Hierarchical Reasoning Interpretability (Ongoing)",
             description: "Research on class of models that utilize hierarchical reasoning. Developing novel approaches to interpret model behaviour for different tasks.",
-            categories: ["hierarchical-reasoning", "interpretability"],
-            tags: ["HRM", "Mech Interp"],
+            categories: ["hierarchical-reasoning", "interpretability", "research"],
+            tags: ["HRM", "Mechanistic Interpretability", "Research"],
             icon: "🔬",
             link: "https://github.com/LeoRodrigues05"
         },
         {
-            title: "Effects of Back-Translation on Indic Language MT Tasks",
-            description: "Advanced video analysis using deep learning for temporal understanding, action recognition, and event detection in video sequences.",
-            categories: ["video", "computer-vision"],
-            tags: ["Video Analysis", "Deep Learning", "Temporal Modeling"],
+            title: "A Thresholding Method for Improving translation Quality for Indic MT task",
+            description: "Presents an analysis of a novel method of corpus filtration for machine translation tasks on Indic languages",
+            categories: ["machine-translation", "nlp", "research"],
+            tags: ["Neural Machine Translation", "Corpus Filtration", "Research"],
             icon: "🎥",
-            link: "https://github.com/LeoRodrigues05"
+            link: "https://acl-bg.org/proceedings/2025/LowResNLP%202025/pdf/2025.lowresnlp-1.3.pdf"
         },
         {
-            title: "Efficient Computer Vision Models",
-            description: "Research on developing efficient and lightweight computer vision architectures optimized for real-world deployment and edge devices.",
-            categories: ["computer-vision"],
-            tags: ["Model Efficiency", "Computer Vision", "Edge AI"],
+            title: "Effects of Back-Translation on Indic Language MT Tasks",
+            description: "Analysis on the effect of different variations of back-translation for over 15 Indic languages.",
+            categories: ["machine-translation", "nlp", "research"],
+            tags: ["Neural Machine Translation", "Back Translation", "Research"],
             icon: "👁️",
             link: "https://github.com/LeoRodrigues05"
         },
         {
-            title: "Contrastive Learning Research",
-            description: "Investigating contrastive learning approaches for representation learning, exploring novel loss functions and training strategies.",
-            categories: ["self-supervised"],
-            tags: ["Contrastive Learning", "Representation Learning", "PyTorch"],
+            title: "Hull Market Prediction",
+            description: "A leak-safe, fully modular machine-learning pipeline for the Hull Tactical Market Prediction Kaggle competition. Built with Polars and Poetry for high-speed data processing and designed for extensibility, reproducibility, and zero data leakage.",
+            categories: ["market-prediction", "ml-pipeline", "pytorch"],
+            tags: ["Market Prediction", "Machine Learning", "PyTorch"],
             icon: "🧠",
-            link: "https://github.com/LeoRodrigues05"
+            link: "https://github.com/OrionXV/HullPrediction"
         },
         {
-            title: "Self-Supervised Video Representation",
-            description: "Developing self-supervised methods for learning video representations without manual annotations, focusing on temporal coherence and motion patterns.",
-            categories: ["video", "self-supervised"],
-            tags: ["Video Learning", "Self-Supervised", "Temporal Reasoning"],
+            title: "Pump It Up",
+            description: "Predicts the operating condition of waterpoints (wells) using machine learning classification models. Includes exploratory data analysis, feature engineering, handling imbalanced classes, and hyperparameter tuning across multiple algorithms.",
+            categories: ["ml"],
+            tags: ["Machine Learning"],
             icon: "🎬",
-            link: "https://github.com/LeoRodrigues05"
+            link: "https://github.com/Magus4450/pump-it-up"
         },
         {
-            title: "Visual Recognition Systems",
-            description: "Advanced object detection and recognition systems using state-of-the-art deep learning architectures for various computer vision applications.",
-            categories: ["computer-vision"],
-            tags: ["Object Detection", "Recognition", "Deep Learning"],
+            title: "Graphical Password Authenticator",
+            description: "Developed a graphical password interface with multiple methods of setting a graphical password. Used SHA-256 encryption to ensure that passwords are safely stored in the database.",
+            categories: [""],
+            tags: ["Graphical Password", "Security", "Software Engineering"],
             icon: "🔍",
             link: "https://github.com/LeoRodrigues05"
         }
