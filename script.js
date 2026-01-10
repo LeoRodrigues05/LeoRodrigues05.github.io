@@ -374,13 +374,13 @@ function initializeProjects() {
         const categories = project.categories || [];
         projectCard.setAttribute('data-category', categories.join(' '));
         
-        // Create project image
-        const projectImage = document.createElement('div');
-        projectImage.className = 'project-image';
-        const placeholder = document.createElement('div');
-        placeholder.className = 'project-placeholder';
-        placeholder.textContent = project.icon || '📝';
-        projectImage.appendChild(placeholder);
+        // Create project image - REMOVED for minimal design
+        // const projectImage = document.createElement('div');
+        // projectImage.className = 'project-image';
+        // const placeholder = document.createElement('div');
+        // placeholder.className = 'project-placeholder';
+        // placeholder.textContent = project.icon || '📝';
+        // projectImage.appendChild(placeholder);
         
         // Create project content
         const projectContent = document.createElement('div');
@@ -422,7 +422,7 @@ function initializeProjects() {
         projectContent.appendChild(tagsDiv);
         projectContent.appendChild(linksDiv);
         
-        projectCard.appendChild(projectImage);
+        // projectCard.appendChild(projectImage); // REMOVED for minimal design
         projectCard.appendChild(projectContent);
         projectsGrid.appendChild(projectCard);
 
