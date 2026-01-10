@@ -177,6 +177,43 @@ body {
     line-height: 1.8;
 }
 
+.hero-social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--background);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.social-link:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.social-link .social-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+    transform: scale(1.1);
+}
+
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -683,6 +720,10 @@ object.cv-viewer {
         font-size: 1.25rem;
     }
 
+    .hero-social-links {
+        justify-content: center;
+    }
+
     .section-title {
         font-size: 2rem;
     }
@@ -723,6 +764,15 @@ object.cv-viewer {
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .social-link {
+        width: 44px;
+        height: 44px;
+    }
+
+    .social-link .social-icon {
+        font-size: 1.25rem;
     }
 
     .section-title {
