@@ -210,6 +210,16 @@ body {
     transition: transform 0.3s ease;
 }
 
+.social-link svg.social-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--text-primary);
+}
+
+.social-link:hover svg.social-icon {
+    color: white;
+}
+
 .social-link:hover .social-icon {
     transform: scale(1.1);
 }
@@ -457,39 +467,30 @@ section {
 }
 
 .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.25rem;
+    max-width: 800px;
 }
 
-.interest-card {
-    padding: 1.5rem;
-    background: var(--background-secondary);
-    border-radius: 12px;
-    text-align: center;
-    transition: all 0.3s ease;
+.interests-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.interest-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-}
-
-.interest-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.interest-card h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-}
-
-.interest-card p {
+.interest-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    line-height: 1.8;
     color: var(--text-secondary);
-    font-size: 0.875rem;
+}
+
+.interest-item:last-child {
+    border-bottom: none;
+}
+
+.interest-item strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.05rem;
 }
 
 .skills-grid {
@@ -640,6 +641,13 @@ object.cv-viewer {
     margin-bottom: 1rem;
 }
 
+svg.contact-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
 .contact-card h3 {
     font-size: 1.125rem;
     font-weight: 600;
@@ -737,10 +745,6 @@ object.cv-viewer {
     }
 
     .contact-info {
-        grid-template-columns: 1fr;
-    }
-
-    .interests-grid {
         grid-template-columns: 1fr;
     }
 

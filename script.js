@@ -107,14 +107,6 @@ document.querySelectorAll('.project-card').forEach(card => {
     observer.observe(card);
 });
 
-// Observe interest cards
-document.querySelectorAll('.interest-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-});
-
 // Observe contact cards
 document.querySelectorAll('.contact-card').forEach(card => {
     card.style.opacity = '0';
@@ -444,35 +436,32 @@ function initializeResearchInterests() {
     // Clear existing interests
     interestsGrid.replaceChildren();
 
-    // Add interest cards from content.js
+    // Create a simple list instead of cards
+    const interestsList = document.createElement('ul');
+    interestsList.className = 'interests-list';
+    
     CONTENT.researchInterests.forEach(interest => {
         if (!interest || !interest.title) return; // Skip invalid entries
         
-        const interestCard = document.createElement('div');
-        interestCard.className = 'interest-card';
+        const listItem = document.createElement('li');
+        listItem.className = 'interest-item';
         
-        const icon = document.createElement('div');
-        icon.className = 'interest-icon';
-        icon.textContent = interest.icon || '📚';
-        
-        const title = document.createElement('h4');
+        const title = document.createElement('strong');
         title.textContent = interest.title;
         
-        const desc = document.createElement('p');
+        const separator = document.createTextNode(': ');
+        
+        const desc = document.createElement('span');
         // Use innerHTML to support HTML tags like links
         desc.innerHTML = sanitizeHTML(interest.description || '');
         
-        interestCard.appendChild(icon);
-        interestCard.appendChild(title);
-        interestCard.appendChild(desc);
-        interestsGrid.appendChild(interestCard);
-
-        // Apply fade-in animation
-        interestCard.style.opacity = '0';
-        interestCard.style.transform = 'translateY(30px)';
-        interestCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(interestCard);
+        listItem.appendChild(title);
+        listItem.appendChild(separator);
+        listItem.appendChild(desc);
+        interestsList.appendChild(listItem);
     });
+    
+    interestsGrid.appendChild(interestsList);
 }
 
 // Initialize Skills section
