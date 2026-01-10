@@ -97,22 +97,26 @@ const CONTENT = {
         {
             title: "Mechanistic Interpretability",
             icon: "👁️",
-            description: "Reverse engineering model algorithms to infer model behaviour during various situations."
+            description: "Reverse engineering model algorithms to infer model behaviour during various situations.",
+            link: "https://www.alignmentforum.org/tag/mechanistic-interpretability"
         },
         {
             title: "Model Biology",
             icon: "🔬",
-            description: "Understanding the qualitative properties driving model behaviour under different circumstances"
+            description: "Understanding the qualitative properties driving model behaviour under different circumstances",
+            link: "https://www.alignmentforum.org/posts/MnkeepcGirnJn736j/how-can-interpretability-researchers-help-agi-go-well#Model_Biology"
         },
         {
             title: "Machine Translation",
             icon: "📜",
-            description: "Low-resource language translation techniques and tasks"
+            description: "Low-resource language translation techniques and tasks",
+            link: "https://github.com/LeoRodrigues05"
         },
         {
             title: "Efficient AI Systems",
             icon: "⚡",
-            description: "Developing lightweight models for edge deployment and real-world applications"
+            description: "Developing lightweight models for edge deployment and real-world applications",
+            link: "https://github.com/LeoRodrigues05"
         }
     ],
 

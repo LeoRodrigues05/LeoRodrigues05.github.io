@@ -436,32 +436,36 @@ function initializeResearchInterests() {
     // Clear existing interests
     interestsGrid.replaceChildren();
 
-    // Create a simple list instead of cards
-    const interestsList = document.createElement('ul');
-    interestsList.className = 'interests-list';
-    
+    // Create clickable cards instead of list
     CONTENT.researchInterests.forEach(interest => {
         if (!interest || !interest.title) return; // Skip invalid entries
         
-        const listItem = document.createElement('li');
-        listItem.className = 'interest-item';
+        // Create a clickable card link
+        const cardLink = document.createElement('a');
+        cardLink.className = 'interest-card-link';
+        // Validate URL to prevent javascript: injection
+        const safeLink = interest.link && (interest.link.startsWith('http://') || interest.link.startsWith('https://') || interest.link.startsWith('/')) 
+            ? interest.link 
+            : '#';
+        cardLink.href = safeLink;
+        cardLink.target = '_blank';
+        cardLink.rel = 'noopener noreferrer';
         
-        const title = document.createElement('strong');
+        const card = document.createElement('div');
+        card.className = 'interest-card';
+        
+        const title = document.createElement('h4');
         title.textContent = interest.title;
         
-        const separator = document.createTextNode(': ');
-        
-        const desc = document.createElement('span');
+        const desc = document.createElement('p');
         // Use innerHTML to support HTML tags like links
         desc.innerHTML = sanitizeHTML(interest.description || '');
         
-        listItem.appendChild(title);
-        listItem.appendChild(separator);
-        listItem.appendChild(desc);
-        interestsList.appendChild(listItem);
+        card.appendChild(title);
+        card.appendChild(desc);
+        cardLink.appendChild(card);
+        interestsGrid.appendChild(cardLink);
     });
-    
-    interestsGrid.appendChild(interestsList);
 }
 
 // Initialize Skills section
