@@ -214,6 +214,7 @@ body {
     width: 24px;
     height: 24px;
     color: var(--text-primary);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-link:hover svg.social-icon {
@@ -467,30 +468,46 @@ section {
 }
 
 .interests-grid {
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 100%;
 }
 
-.interests-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.interest-card-link {
+    text-decoration: none;
+    display: block;
 }
 
-.interest-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
-    line-height: 1.8;
-    color: var(--text-secondary);
+.interest-card {
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    height: 100%;
+    cursor: pointer;
 }
 
-.interest-item:last-child {
-    border-bottom: none;
+.interest-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+    background: var(--background-secondary);
 }
 
-.interest-item strong {
-    color: var(--text-primary);
+.interest-card h4 {
+    font-size: 1.125rem;
     font-weight: 600;
-    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.interest-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
 }
 
 .skills-grid {
@@ -633,19 +650,30 @@ object.cv-viewer {
 .contact-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
-    background: var(--background-secondary);
+    background: var(--primary-color);
+}
+
+.contact-card:hover svg.contact-icon {
+    color: white;
+}
+
+.contact-card:hover h3 {
+    color: white;
 }
 
 .contact-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
 svg.contact-icon {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
 .contact-card h3 {
